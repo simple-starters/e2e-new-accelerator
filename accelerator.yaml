@@ -30,9 +30,12 @@ accelerator:
       description: test option with array values
       inputType: select
       choices:
-        one: "First Option"
-        two: "Second Option"
-        three: "Third Option"
+      - value: "one"
+        text: "First Option"
+      - value: "two"
+        text: "Second Option"
+      - value: "three"
+        text: "Third Option"
       defaultValue: ["one", "two"]      
 
 engine:
