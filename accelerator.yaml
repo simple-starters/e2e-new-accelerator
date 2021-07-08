@@ -25,6 +25,15 @@ accelerator:
       inputType: text
       required: true
       defaultValue: main
+    - name: multiple
+      dataType: [string, string]
+      description: test option with array values
+      inputType: select
+      choices:
+        one: "First Option"
+        two: "Second Option"
+        three: "Third Option"
+      defaultValue: ["one", "two"]      
 
 engine:
   sources:
