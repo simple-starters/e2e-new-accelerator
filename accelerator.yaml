@@ -6,16 +6,23 @@ accelerator:
     - Tanzu
     - Accelerator
   options:
-    - name: name
-      label: K8s resource name
+    - name: acceleratorName
+      label: Name for Kubernetes
+      description: Kubernetes resource name - see https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
       required: true
-
-    - name: url
+      dataType: string
+      inputType: text
+    - name: gitUrl
       label: Git Repository URL
+      description: GitHub or GitLab repository url
+      dataType: string
+      inputType: text
       required: true
-
-    - name: branch
+    - name: gitBranch
       label: Git Branch
+      description: git branch name
+      dataType: string
+      inputType: text
       required: true
       defaultValue: main
     - name: multiple
@@ -31,19 +38,16 @@ accelerator:
         text: "Third Option"
       defaultValue: ["one", "two"]      
 
-    - name: tags
-      label: Tags
-      inputType: tag
-      dataType: [string]
-      defaultValue: []
-      display: true
-
-    - name: icon
-      label: Icon URL
-      defaultValue: https://raw.githubusercontent.com/simple-starters/icons/master/icon-tanzu-light.png
-
 engine:
-  merge:
-    - type: YTT
-    - include:
-        - README.md
+  sources:
+    - includes: ["**"]
+    - includes: ["k8s/acc.yaml"]
+      transformations:
+      - type: ReplaceText
+        substitutions:
+        - text: acc-name
+          with: "#acceleratorName"
+        - text: acc-git-url
+          with: "#gitUrl"
+        - text: acc-git-branch
+          with: "#gitBranch"
