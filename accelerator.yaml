@@ -26,7 +26,7 @@ accelerator:
       required: true
       defaultValue: main
     - name: multiple
-      dataType: [string, string]
+      dataType: [string]
       description: test option with array values
       inputType: select
       choices:
